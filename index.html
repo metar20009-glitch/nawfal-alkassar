@@ -1,23 +1,730 @@
-.snow {
-    position: fixed;
-    pointer-events: none !important;
-    z-index: 1 !important;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>نوفل الكسار ༒『⚕️』</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-.page {
-    position: relative;
-    z-index: 10;
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
 }
 
-.card {
-    position: relative;
-    z-index: 20;
+body{
+    background:#050505;
+    color:white;
+    font-family:Tahoma,Arial,sans-serif;
+    overflow-x:hidden;
 }
 
-button {
-    position: relative;
-    z-index: 100;
-    pointer-events: auto !important;
-    cursor: pointer;
-    touch-action: manipulation;
+/* الصفحة */
+.page{
+    position:relative;
+    z-index:10;
+    width:100%;
+    max-width:680px;
+    margin:auto;
+    padding:0 18px 40px;
 }
+
+/* العنوان العلوي */
+.top{
+    height:115px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:0 12px 15px;
+}
+
+.top .name{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.top .english{
+    font-size:26px;
+}
+
+/* البطاقة */
+.card{
+    position:relative;
+    z-index:20;
+    background:#050507;
+    border:1px solid #252529;
+    border-radius:30px;
+    padding:25px 24px 28px;
+    box-shadow:0 0 35px rgba(0,0,0,.7);
+}
+
+/* العناوين */
+label{
+    display:block;
+    color:#999;
+    font-size:18px;
+    margin:0 3px 10px;
+}
+
+/* الحقول */
+input,
+textarea{
+    position:relative;
+    z-index:50;
+
+    width:100%;
+    display:block;
+
+    background:#101012;
+    color:#fff;
+
+    border:2px solid #1f1f23;
+    border-radius:22px;
+
+    padding:17px 20px;
+
+    font-family:inherit;
+    font-size:18px;
+
+    outline:none;
+
+    pointer-events:auto;
+    touch-action:auto;
+}
+
+input{
+    height:80px;
+}
+
+textarea{
+    height:230px;
+    resize:none;
+    line-height:1.6;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#38383d;
+}
+
+/* المسافات */
+.field{
+    margin-bottom:28px;
+}
+
+/* الأزرار الحمراء */
+.red-btn{
+    position:relative;
+    z-index:100;
+
+    width:100%;
+    height:95px;
+
+    margin-top:15px;
+
+    border:0;
+    border-radius:24px;
+
+    background:linear-gradient(
+        135deg,
+        #a90000,
+        #690000
+    );
+
+    color:white;
+    font-size:21px;
+    font-family:inherit;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+    touch-action:manipulation;
+
+    box-shadow:0 5px 18px rgba(120,0,0,.18);
+}
+
+.red-btn:active{
+    transform:scale(.98);
+}
+
+/* الأزرار الصغيرة */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:16px;
+}
+
+.small-btn{
+    position:relative;
+    z-index:100;
+
+    min-height:85px;
+
+    border:1px solid #151519;
+    border-radius:20px;
+
+    background:#0b0b0d;
+    color:white;
+
+    font-family:inherit;
+    font-size:17px;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+    touch-action:manipulation;
+}
+
+.small-btn:active{
+    background:#1b1b1e;
+    transform:scale(.98);
+}
+
+/* العداد */
+.counter-area{
+    margin-top:34px;
+    padding-top:25px;
+    border-top:2px solid #171719;
+}
+
+.counter-text{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    color:#999;
+    font-size:18px;
+}
+
+.counter{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:50px;
+    height:50px;
+
+    background:#d00000;
+    border-radius:50%;
+
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.progress{
+    height:8px;
+    width:100%;
+
+    background:#101012;
+    border-radius:20px;
+
+    margin-top:17px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+
+    background:#ff5656;
+    border-radius:20px;
+
+    transition:.3s;
+}
+
+/* أسفل */
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:28px;
+
+    color:#eee;
+    font-size:17px;
+}
+
+.footer a{
+    color:#fff;
+    text-decoration:none;
+
+    position:relative;
+    z-index:150;
+
+    pointer-events:auto;
+    touch-action:manipulation;
+}
+
+/* الثلج */
+.snow{
+    position:fixed;
+    top:-40px;
+
+    z-index:2;
+
+    color:#fff;
+
+    pointer-events:none !important;
+    user-select:none;
+
+    animation:snowfall linear forwards;
+}
+
+@keyframes snowfall{
+
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* الهاتف */
+@media(max-width:500px){
+
+    .page{
+        padding:0 12px 30px;
+    }
+
+    .top{
+        height:110px;
+    }
+
+    .top .name{
+        font-size:26px;
+    }
+
+    .top .english{
+        font-size:24px;
+    }
+
+    .card{
+        padding:23px 15px 25px;
+        border-radius:28px;
+    }
+
+    input{
+        height:78px;
+    }
+
+    textarea{
+        height:225px;
+    }
+
+    .red-btn{
+        height:95px;
+    }
+
+    .small-btn{
+        font-size:16px;
+    }
+
+    .footer{
+        font-size:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- العنوان -->
+    <div class="top">
+
+        <div class="name">
+            اليافعي
+        </div>
+
+        <div class="english">
+            🇺🇸 English
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <!-- البريد -->
+        <div class="field">
+
+            <label>بريد الدعم</label>
+
+            <input
+                id="email"
+                type="email"
+                value="abuse@telegram.org"
+                placeholder="اكتب بريد الدعم"
+            >
+
+        </div>
+
+
+        <!-- الموضوع -->
+        <div class="field">
+
+            <label>الموضوع</label>
+
+            <input
+                id="subject"
+                type="text"
+                placeholder="اكتب موضوع البلاغ"
+            >
+
+        </div>
+
+
+        <!-- نص البلاغ -->
+        <div class="field">
+
+            <label>نص البلاغ</label>
+
+            <textarea
+                id="message"
+                placeholder="اكتب تفاصيل البلاغ هنا..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- إرسال -->
+        <button
+            type="button"
+            class="red-btn"
+            onclick="sendReport()">
+
+            📩 إرسال البلاغ
+
+        </button>
+
+
+        <!-- الإضافات -->
+        <button
+            type="button"
+            class="red-btn"
+            onclick="extras()">
+
+            ⚡ الإضافات
+
+        </button>
+
+
+        <!-- الأزرار -->
+        <div class="grid">
+
+            <button
+                type="button"
+                class="small-btn"
+                onclick="copyReport()">
+
+                📋 نسخ البلاغ
+
+            </button>
+
+
+            <button
+                type="button"
+                class="small-btn"
+                onclick="previewReport()">
+
+                👁️ معاينة
+
+            </button>
+
+
+            <button
+                type="button"
+                class="small-btn"
+                onclick="anotherText()">
+
+                📝 استخدام نص آخر
+
+            </button>
+
+
+            <button
+                type="button"
+                class="small-btn"
+                onclick="resetCounter()">
+
+                🔄 تصفير العداد
+
+            </button>
+
+        </div>
+
+
+        <!-- العداد -->
+        <div class="counter-area">
+
+            <div class="counter-text">
+
+                <span>
+                    عدد البلاغات المرسلة:
+                </span>
+
+                <span
+                    class="counter"
+                    id="counter">
+
+                    0
+
+                </span>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    id="progress">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- أسفل -->
+        <div class="footer">
+
+            <span>
+                تواصل مع المطور
+            </span>
+
+            <a
+                href="https://t.me/wu_7u"
+                target="_blank"
+                rel="noopener">
+
+                @wu_7u
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let count = 0;
+
+
+/* إرسال البلاغ */
+function sendReport(){
+
+    let email =
+        document.getElementById("email").value.trim();
+
+    let subject =
+        document.getElementById("subject").value.trim();
+
+    let message =
+        document.getElementById("message").value.trim();
+
+
+    if(!email){
+        alert("اكتب بريد الدعم أولاً");
+        return;
+    }
+
+    if(!subject){
+        alert("اكتب موضوع البلاغ أولاً");
+        return;
+    }
+
+    if(!message){
+        alert("اكتب نص البلاغ أولاً");
+        return;
+    }
+
+
+    count++;
+
+    document.getElementById("counter").innerText =
+        count;
+
+    document.getElementById("progress").style.width =
+        Math.min(count * 10,100) + "%";
+
+
+    /* فتح تطبيق البريد */
+    let mailBody =
+        "الموضوع: " + subject +
+        "\n\n" +
+        message;
+
+
+    let mailto =
+        "mailto:" +
+        email +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(mailBody);
+
+
+    window.location.href = mailto;
+}
+
+
+/* نسخ البلاغ */
+function copyReport(){
+
+    let email =
+        document.getElementById("email").value;
+
+    let subject =
+        document.getElementById("subject").value;
+
+    let message =
+        document.getElementById("message").value;
+
+
+    let text =
+        "بريد الدعم:\n" +
+        email +
+        "\n\n" +
+        "الموضوع:\n" +
+        subject +
+        "\n\n" +
+        "نص البلاغ:\n" +
+        message;
+
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(text)
+        .then(function(){
+
+            alert("تم نسخ البلاغ 📋");
+
+        });
+
+    }else{
+
+        alert("تم تجهيز نص البلاغ");
+
+    }
+}
+
+
+/* المعاينة */
+function previewReport(){
+
+    let subject =
+        document.getElementById("subject").value;
+
+    let message =
+        document.getElementById("message").value;
+
+
+    alert(
+        "الموضوع:\n\n" +
+        subject +
+        "\n\n" +
+        "نص البلاغ:\n\n" +
+        message
+    );
+}
+
+
+/* نص جاهز */
+function anotherText(){
+
+    document.getElementById("subject").value =
+        "Запрос на восстановление моего аккаунта";
+
+
+    document.getElementById("message").value =
+`Здравствуйте, команда поддержки Telegram!
+
+Прошу прощения за беспокойство.
+
+Мой аккаунт Telegram был удалён, и я хотел бы попросить вас помочь мне восстановить его.
+
+Пожалуйста, проверьте мою ситуацию и помогите восстановить доступ к аккаунту.
+
+Спасибо!`;
+}
+
+
+/* الإضافات */
+function extras(){
+
+    alert(
+        "⚡ الإضافات\n\n" +
+        "📋 نسخ البلاغ\n" +
+        "👁️ معاينة\n" +
+        "📝 استخدام نص آخر\n" +
+        "🔄 تصفير العداد"
+    );
+}
+
+
+/* تصفير العداد */
+function resetCounter(){
+
+    count = 0;
+
+    document.getElementById("counter").innerText =
+        "0";
+
+    document.getElementById("progress").style.width =
+        "0%";
+}
+
+
+/* الثلج */
+function createSnow(){
+
+    let snow =
+        document.createElement("div");
+
+    snow.className = "snow";
+
+    snow.innerText = "❄";
+
+    snow.style.left =
+        Math.random() * 100 + "vw";
+
+    snow.style.fontSize =
+        (10 + Math.random() * 18) + "px";
+
+    snow.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+    document.body.appendChild(snow);
+
+
+    setTimeout(function(){
+
+        snow.remove();
+
+    },13000);
+}
+
+
+setInterval(createSnow,600);
+
+</script>
+
+</body>
+    </html>
