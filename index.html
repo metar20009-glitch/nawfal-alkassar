@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>نوفل الكسار</title>
+<title>المعتزل نوفل الكسار</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
-body{
+html,body{
     margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
     background:#050505;
     color:#fff;
     font-family:Tahoma,Arial,sans-serif;
@@ -23,173 +26,18 @@ body{
 .container{
     width:92%;
     max-width:600px;
-    margin:40px auto;
+    margin:30px auto;
 }
 
 .card{
-    background:#080808;
+    position:relative;
+    z-index:10;
+    background:#0b0b0b;
     border:1px solid #292929;
-    border-radius:30px;
-    padding:25px;
+    border-radius:28px;
+    padding:22px;
+    box-shadow:0 0 30px rgba(255,0,0,.08);
 }
-
-/* العنوان */
 
 .header{
-    display:flex;
-    justify-content:flex-start;
-    margin-bottom:25px;
-}
-
-.english{
-    font-size:25px;
-}
-
-/* النصوص */
-
-label{
-    display:block;
-    color:#aaa;
-    font-size:18px;
-    margin:15px 5px 8px;
-}
-
-/* الحقول */
-
-input,
-textarea{
-
-    width:100%;
-
-    background:#111;
-
-    color:white;
-
-    border:2px solid #242424;
-
-    border-radius:20px;
-
-    padding:18px;
-
-    font-size:18px;
-
-    font-family:inherit;
-
-    outline:none;
-}
-
-input{
-    height:70px;
-}
-
-textarea{
-    height:220px;
-    resize:none;
-}
-
-input:focus,
-textarea:focus{
-    border-color:#777;
-}
-
-/* الأزرار */
-
-button{
-
-    width:100%;
-
-    border:0;
-
-    font-family:inherit;
-
-    color:white;
-
-    cursor:pointer;
-
-    -webkit-tap-highlight-color:transparent;
-}
-
-.red{
-
-    height:90px;
-
-    margin-top:15px;
-
-    border-radius:25px;
-
-    background:linear-gradient(
-        135deg,
-        #c90000,
-        #760000
-    );
-
-    font-size:22px;
-
-    font-weight:bold;
-}
-
-.red:active{
-    transform:scale(.98);
-}
-
-/* الأزرار الصغيرة */
-
-.buttons{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-    margin-top:15px;
-}
-
-.small{
-
-    height:80px;
-
-    border-radius:20px;
-
-    background:#0d0d0f;
-
-    border:1px solid #383 document.getElementById("progress").style.width = "0%";
-}
-
-/* الثلج */
-function createSnow(){
-
-    let snow =
-        document.createElement("div");
-
-    snow.className = "snow";
-
-    snow.innerText = "❄";
-
-    snow.style.left =
-        Math.random() * 100 + "vw";
-
-    snow.style.fontSize =
-        (10 + Math.random() * 18) + "px";
-
-    snow.style.animationDuration =
-        (5 + Math.random() * 7) + "s";
-
-    document.body.appendChild(snow);
-
-    setTimeout(function(){
-        snow.remove();
-    },13000);
-}
-
-setInterval(createSnow,600);
-
-</script>
-
-</body>
-</html>
-        <div class="header">
-    <div class="english">
-        المعتزل نوفل الكسار
-    </div>
-</div>
+   
