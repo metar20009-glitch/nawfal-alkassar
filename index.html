@@ -63,3 +63,433 @@ label{
 }
 
 input,
+textarea{
+    width:100%;
+    background:#18181a;
+    color:white;
+    border:2px solid #29292d;
+    border-radius:18px;
+    padding:17px;
+    font-size:17px;
+    outline:none;
+    font-family:inherit;
+    transition:.2s;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#8b0000;
+    box-shadow:0 0 15px rgba(139,0,0,.2);
+}
+
+textarea{
+    height:180px;
+    resize:none;
+}
+
+/* الأزرار الرئيسية */
+.main-btn{
+    width:100%;
+    border:0;
+    border-radius:20px;
+    padding:18px;
+    margin-top:15px;
+    background:linear-gradient(135deg,#a90000,#520000);
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(120,0,0,.25);
+    transition:.2s;
+}
+
+.main-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.15);
+}
+
+/* شبكة الأزرار */
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:15px;
+}
+
+.small-btn{
+    border:1px solid #202024;
+    border-radius:18px;
+    padding:17px 10px;
+    background:#111114;
+    color:#eee;
+    font-size:16px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.small-btn:hover{
+    background:#1d1d20;
+    transform:translateY(-2px);
+}
+
+/* العداد */
+.counter-box{
+    margin-top:30px;
+    padding-top:22px;
+    border-top:1px solid #252529;
+}
+
+.counter-title{
+    color:#aaa;
+    font-size:17px;
+    text-align:center;
+}
+
+.counter{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:45px;
+    height:45px;
+    margin-right:8px;
+    background:#d40000;
+    border-radius:50%;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#171719;
+    border-radius:20px;
+    margin-top:18px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    width:12%;
+    height:100%;
+    background:#ff5c5c;
+    border-radius:20px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:28px;
+    color:#ddd;
+    font-size:15px;
+}
+
+.footer span{
+    cursor:pointer;
+}
+
+/* الثلج */
+.snow{
+    position:fixed;
+    top:-30px;
+    color:white;
+    pointer-events:none;
+    z-index:9999;
+    animation:fall linear infinite;
+    opacity:.8;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-40px) rotate(0deg);
+    }
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* الموبايل */
+@media(max-width:500px){
+
+    .container{
+        padding:28px 14px 40px;
+    }
+
+    .header h1{
+        font-size:32px;
+    }
+
+    .header p{
+        font-size:16px;
+    }
+
+    .card{
+        padding:20px 15px;
+        border-radius:25px;
+    }
+
+    input,
+    textarea{
+        font-size:16px;
+    }
+
+    .buttons{
+        gap:10px;
+    }
+
+    .small-btn{
+        font-size:15px;
+        padding:16px 7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>مركز البلاغات</h1>
+
+        <p>
+            اكتب موضوع البلاغ والتفاصيل، ثم اختر
+            الجهة التي تريد إرسال البلاغ إليها.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <label>موضوع البلاغ</label>
+
+        <input
+            id="subject"
+            type="text"
+            placeholder="اكتب موضوع البلاغ"
+        >
+
+        <label>تفاصيل البلاغ</label>
+
+        <textarea
+            id="message"
+            placeholder="اكتب تفاصيل البلاغ هنا..."
+        ></textarea>
+
+        <button class="main-btn" onclick="sendReport()">
+            📩 إرسال البلاغ
+        </button>
+
+        <button class="main-btn" onclick="addText()">
+            ⚡ الإضافات
+        </button>
+
+        <div class="buttons">
+
+            <button class="small-btn" onclick="copyReport()">
+                📋 نسخ البلاغ
+            </button>
+
+            <button class="small-btn" onclick="previewReport()">
+                👁️ معاينة
+            </button>
+
+            <button class="small-btn" onclick="useText()">
+                📝 استخدام نص آخر
+            </button>
+
+            <button class="small-btn" onclick="resetForm()">
+                🔄 تصفير العداد
+            </button>
+
+        </div>
+
+        <div class="counter-box">
+
+            <div class="counter-title">
+                عدد البلاغات المرسلة:
+                <span class="counter" id="counter">0</span>
+            </div>
+
+            <div class="progress">
+                <span id="progress"></span>
+            </div>
+
+        </div>
+
+        <div class="footer">
+
+            <span onclick="alert('نوفل الكسار ༒『⚕️』')">
+                المعزول بوقاصد اليافعي
+            </span>
+
+            <span onclick="contactDeveloper()">
+                تواصل مع المطور
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let count = 0;
+
+/* إرسال البلاغ */
+function sendReport(){
+
+    const subject =
+        document.getElementById("subject").value.trim();
+
+    const message =
+        document.getElementById("message").value.trim();
+
+    if(!subject || !message){
+
+        alert("يرجى كتابة موضوع البلاغ والتفاصيل أولاً.");
+        return;
+    }
+
+    count++;
+
+    document.getElementById("counter").textContent = count;
+
+    let progress = Math.min(count * 10,100);
+
+    document.getElementById("progress").style.width =
+        progress + "%";
+
+    alert("تم تجهيز البلاغ بنجاح ✅");
+}
+
+/* نسخ البلاغ */
+function copyReport(){
+
+    const subject =
+        document.getElementById("subject").value;
+
+    const message =
+        document.getElementById("message").value;
+
+    const text =
+`موضوع البلاغ:
+${subject}
+
+تفاصيل البلاغ:
+${message}`;
+
+    if(!subject && !message){
+
+        alert("لا يوجد بلاغ لنسخه.");
+        return;
+    }
+
+    navigator.clipboard.writeText(text);
+
+    alert("تم نسخ البلاغ 📋");
+}
+
+/* معاينة */
+function previewReport(){
+
+    const subject =
+        document.getElementById("subject").value;
+
+    const message =
+        document.getElementById("message").value;
+
+    if(!subject && !message){
+
+        alert("اكتب البلاغ أولاً.");
+        return;
+    }
+
+    alert(
+        "موضوع البلاغ:\n\n" +
+        subject +
+        "\n\nتفاصيل البلاغ:\n\n" +
+        message
+    );
+}
+
+/* استخدام نص آخر */
+function useText(){
+
+    document.getElementById("subject").value =
+        "طلب استعادة حسابي";
+
+    document.getElementById("message").value =
+        "السلام عليكم، أرجو مراجعة طلبي ومساعدتي في استعادة حسابي.";
+
+}
+
+/* الإضافات */
+function addText(){
+
+    alert(
+        "⚡ الإضافات\n\n" +
+        "• نصوص جاهزة\n" +
+        "• نسخ البلاغ\n" +
+        "• معاينة البلاغ\n" +
+        "• إعادة التعيين"
+    );
+
+}
+
+/* تصفير */
+function resetForm(){
+
+    count = 0;
+
+    document.getElementById("counter").textContent = "0";
+
+    document.getElementById("progress").style.width = "0%";
+
+    document.getElementById("subject").value = "";
+
+    document.getElementById("message").value = "";
+
+}
+
+/* التواصل */
+function contactDeveloper(){
+
+    alert("تواصل مع المطور عبر Telegram");
+}
+
+
+/* إنشاء الثلج */
+function createSnow(){
+
+    const snow = document.createElement("div");
+
+    snow.className = "snow";
+
+    snow.innerHTML = "❄";
+
+    snow.style.left =
+        Math.random() * 100 + "vw";
+
+    snow.style.fontSize =
+        (10 + Math.random() * 18) + "px";
+
+    snow.style.animationDuration =
+        (5 + Math.random() * 8) + "s";
+
+    snow.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    document.body.appendChild(snow);
+
+    setTimeout(()=>{
+        snow.remove();
+    },15000);
+}
+
+setInterval(createSnow,500);
+
+</script>
+
+</body>
+</html>
