@@ -1,4 +1,97 @@
-<a href="mailto:abuse@telegram.org?subject=بلاغ&body=اكتب تفاصيل البلاغ هنا"
-   style="display:inline-block;padding:12px 20px;background:#d00;color:white;text-decoration:none;border-radius:8px;">
-   إرسال البلاغ
-</a>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نوفل الكسار</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .box {
+      width: 90%;
+      max-width: 500px;
+      background: #1d1d1d;
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-top: 15px;
+      padding: 12px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: none;
+      resize: vertical;
+      font-size: 16px;
+    }
+
+    .send {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 13px 25px;
+      background: #d00000;
+      color: white;
+      text-decoration: none;
+      border-radius: 9px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>نوفل الكسار</h1>
+
+    <p>
+      نموذج إرسال بلاغ عبر البريد الإلكتروني.
+      اكتب تفاصيل البلاغ ثم اضغط على زر الإرسال.
+    </p>
+
+    <textarea id="details" placeholder="اكتب تفاصيل البلاغ هنا..."></textarea>
+
+    <a id="send" class="send" href="#">
+      إرسال البلاغ
+    </a>
+  </div>
+
+  <script>
+    document.getElementById("send").addEventListener("click", function () {
+      const details = document.getElementById("details").value;
+
+      const subject = "بلاغ";
+      const body = details || "اكتب تفاصيل البلاغ هنا";
+
+      this.href =
+        "mailto:abuse@telegram.org" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  </script>
+
+</body>
+       </html>
