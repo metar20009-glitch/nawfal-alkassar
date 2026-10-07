@@ -1,4 +1,72 @@
-<a href="mailto:abuse@telegram.org,stopCA@telegram.org,recover@telegram.org?subject=بلاغ&body=اكتب تفاصيل البلاغ هنا"
-   style="display:inline-block;padding:12px 20px;background:#d00;color:white;text-decoration:none;border-radius:8px;">
-   إرسال البلاغ
-</a>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نوفل الكسار - مركز البلاغات</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#111;
+  color:#fff;
+}
+.container{
+  max-width:500px;
+  margin:40px auto;
+  padding:25px;
+  background:#1c1c1c;
+  border-radius:18px;
+}
+h1{text-align:center}
+label{
+  display:block;
+  margin:15px 0 7px;
+}
+input,textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  font-size:16px;
+}
+textarea{height:140px}
+.buttons{
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+}
+button{
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  background:#d00000;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+.email{
+  text-align:center;
+  color:#aaa;
+  margin-top:20px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>مركز البلاغات</h1>
+
+<p style="text-align:center;color:#ccc;">
+اكتب موضوع البلاغ والتفاصيل، ثم اختر الجهة التي تريد إرسال البلاغ إليها.
+</p>
+
+<label>موضوع البلاغ</label>
+<input id="subject" type="text" placeholder="اكتب موضوع البلاغ">
+
+<label>تفاصيل البل
